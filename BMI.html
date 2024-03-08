@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BMI CALCULATOR</title>
+    <link rel="stylesheet" href="BMI DESIGN.css">
+    <script>
+        function cal_bmi(x){
+            if(x==='='){
+                var weight=parseFloat(document.getElementById("len1").value)
+                var feet=parseFloat(document.getElementById("len2").value)
+                var inch=parseFloat(document.getElementById("len3").value)
+                var meter=parseFloat(feet/3.281)+parseFloat(inch/39.37)
+                var BMI=parseFloat(weight/(meter*meter))
+                var image = document.getElementById("img");
+                if (BMI <= 18) {
+                    image.src = "assets/underweight.png";
+                    image.alt = "Image 1";
+                    document.getElementById("display").innerHTML="Your BMI is: "+ BMI.toFixed(2)+" Kg/m^2"
+                    document.getElementById("display").style.color="#47e4c7"
+                } else if (BMI>18 && BMI < 24) {
+                    image.src = "assets/normal.png";
+                    image.alt = "Image 2";
+                    document.getElementById("display").innerHTML="Your BMI is: "+ BMI.toFixed(2)+" Kg/m^2"
+                    document.getElementById("display").style.color="#1ed91e"
+                } else if (BMI >=25 && BMI<=29 ) {
+                    image.src = "assets/overweight.png";
+                    image.alt = "Image 3";
+                    document.getElementById("display").innerHTML="Your BMI is: "+ BMI.toFixed(2)+" Kg/m^2"
+                    document.getElementById("display").style.color="#ff8001"
+                } else if (BMI>30){
+                    image.src = "assets/obese.png";
+                    image.alt = "Image 4";
+
+                    document.getElementById("display").innerHTML="Your BMI is: "+ BMI.toFixed(2)+" Kg/m^2"
+                    document.getElementById("display").style.color="#ff0101"
+                }
+            }else if(x==='Clear'){
+                document.getElementById("len1").value=null
+                document.getElementById("len2").value=null
+                document.getElementById("len3").value=null
+                document.getElementById("display").value=null
+            }
+        }
+    </script>
+    <style>
+        *{
+
+        }
+        #form{
+            background: url("assets/img_19.png");
+            background-size: cover;
+            color: white;
+        }
+        #heading{
+            margin-top: 5px;
+            font-size: xx-large;
+        }
+        #body{
+            font-size:x-large;
+            margin-left: 45px;
+        }
+        #len1{
+            height: 50px;
+            width: 250px;
+            font-size: large;
+        }
+        #len2{
+            height: 50px;
+            width: 200px;
+            font-size: large;
+        }
+        #len3{
+            height: 50px;
+            width: 200px;
+            font-size: large;
+        }
+        #out{
+            height: 50px;
+            width: 300px;
+        }
+        #cal{
+            height: 50px;
+            width: 130px;
+            border-radius: 20px;
+            font-size: large;
+        }
+        #reset{
+            height: 50px;
+            width: 130px;
+            border-radius: 20px;
+            font-size: large;
+        }
+        #img{
+            margin-left: 110px;
+            height: 250px;
+            width: 500px;
+        }
+    </style>
+        </head>
+
+
+<body id="form">
+<center>
+    <div id="heading">
+        <h1> BMI Calculator</h1>
+    </div>
+</center>
+
+            <table>
+                <tr>
+                    <td>
+                        <div id="body">
+                        <label>Enter Your Weight:</label>
+                        <br> <br>
+                        <input type="number"  id="len1" placeholder="kg">
+                        <br><br>
+                        <label>Enter Your Height:</label>
+                        <br><br>
+                        <input type="number"  id="len2" placeholder="feet">
+                            <input type="number"  id="len3" placeholder="inch">
+                        <br> <br>
+                            <input type="button"  id="cal" value="CALCULATE" onclick="cal_bmi('=')">&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type="button" id="reset" value="CLEAR" onclick="cal_bmi('Clear')">
+                            <div style="margin-top: 15%">
+                            <label>Show Your Result:</label>
+                                <p  id="display" style="background-color: rgba(25,25,25,0.7);font-size: xx-large"></p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <img src="assets/bmi.png" id="img" style="background-color: rgba(25,25,25,0.5);border-radius: 10px">
+                    </td>
+                </tr>
+            </table>
+</body>
+</html>
